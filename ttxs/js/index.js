@@ -1,0 +1,2 @@
+/* index.js Date:2017-03-07 21:23:41 */
+var oBtn=document.getElementById("jl-rq");var oBox=oBtn.getElementsByTagName("li");var oBoo=document.getElementsByName("block-1");for(var i=0,len=oBox.length;len>i;i++)oBox[i].index=i,oBox[i].onmouseover=function(){oBoo[this.index].style.display="block",this.style.backgroundColor="#f4f8fb"},oBox[i].onmouseout=function(){oBoo[this.index].style.display="none",this.style.backgroundColor="#fff"};
