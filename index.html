@@ -4,23 +4,205 @@
 <meta charset="UTF-8"/>
 <meta name="renderer" content="webkit"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-<title>个人页面</title>
+<title>前端 Una_book</title>
 <style>
-	body{background:#999;}
+    body, textarea, input, select, option {
+  font-size: 12px;
+  color: #333;
+  font-family: "Microsoft Yahei","Hiragino Sans GB", tahoma, arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-size: 100%;
+}
+body, h1, h2, h3, h4, h5, h6, blockquote, ol, ul, dl, dd, p, textarea, input, select, option, form {
+  margin: 0;
+}
+ol, ul, textarea, input, option, th, td {
+  padding: 0;
+}
+table {
+  border-collapse: collapse;
+}
+li {
+  list-style-type: none;
+}
+article, aside, details, figcaption, figure, footer, header, menu, nav, section {
+  display: block;
+}
+.clearfix:after {content:'.';display:block;height:0;clear:both;visibility:hidden;}
+.clearfix {*zoom:1;}
+.clear {
+  clear: both;
+  height: 0;
+  overflow: hidden;
+}
+a {
+  text-decoration: none;
+  color: #333;
+}
+a, textarea, input, select {
+  outline: none;
+}
+textarea {
+  overflow: auto;
+  resize: none;
+}
+.img img {
+  display: block;
+}
+a img {
+  border: none;
+}
+/*//.z-index {
+//  position: fixed;
+//  _position: absolute;
+//  z-index: 999;
+//  display: none;
+//  overflow: hidden;
+//}*/
+.pr {
+  position: relative;
+}
+.pa {
+  position: absolute;
+}
+.fl {
+  float: left;
+}
+.fr {
+  float: right;
+}
+a:hover {
+  text-decoration: underline;
+}
+.m {
+  margin: 0 auto;
+  width: 1200px;
+}
+.t10 {
+  margin-top: 10px;
+}
+.hide {
+  display: none;
+}
+.show {
+  display: block;
+}
+/**
+去ie10 小X
+*/
+::-ms-clear { display: none;}
+::-ms-reveal { display: none;}
+/**
+placeholder color更改
+*/
+::-webkit-input-placeholder { /* WebKit browsers */
+    color:#ccc;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color:#ccc;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color:#ccc;
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color:#ccc;
+}
+.lift_bar{width:300px;height:800px;background:#eaeaea;float:left;}
+.lift_bar dt{height:120px; background:#ea2e49;}
+.lift_bar h2{height:27px; width:152px;background:url(i/logo1.png) no-repeat 0 46px;padding-top:46px;margin-left:67px;}
+.lift_bar dd{background:#eaeaea;height:90px;padding-top:16px;}
+.lift_bar dd p{background:#eaeaea;height:63px; line-height:63px;font-size:14px;color:#000;float:left;width:300px;}
+.lift_bar dd em{float:left;width:23px;height:19px;background:url(i/mu-1.png) no-repeat 0 0;margin:23px 18px 0 63px;}
+.lift_bar dd var{float:left;width:3px;height:63px;background:#ea2e49;display:none;}
+.lift_bar dd p{background:#ead7da;}
+.lift_bar dd var{display:block;}
+.lift_bar dd span{color:#ea455c;}
+.middol_con{margin:0 299px;padding:0 20px;}
+.right_bar{width:300px;height:120px;background:#77c4d3;float:right;}
+.middol_con .head_tit{height:120px;}
+.middol_con h1{font-size:20px;color:#b3b3b3;font-weight:normal;height:120px;line-height:120px;padding-left:60px;float:left;}
+.middol_con .head_tit img{height:60px;width:57px;border-radius:40px;float:left;margin-top:30px;}
+.middol_con .right_img h2{font-size:14px;color:#b3b3b3;font-weight:normal;height:120px;line-height:120px;float:right;padding:0 20px;}
+.middol_con .right_img{float:right;width:154px;}
+.middol_con .banner_f img{margin:0 auto; width:100%;height:300px;}
+.middol_con .con_zp h2{font-size:16px;color:#b3b3b3;height:60px;line-height:60px;font-weight:normal;padding-left:20px;}
+.con_zp .con_tp li{height:190px;width:158px;float:left;margin:20px;border:1px solid #fff;}
+.con_zp .con_tp li:hover{border:1px solid #ea2e49;}
+.con_zp .con_tp li a{height:160px;width:158px;display:block;}
+/*.middol_con .con_zp .con_tp{width:800px;}*/
+.con_zp .con_tp li h3{height:30px;line-height:30px;font-weight:normal;color:#000;background:#eaeaea;}
+.con_zp .con_tp li h3 em{float:left;height:20px;width:20px;background:url(i/xh.png) no-repeat 0 0;margin:5px 10px 0 10px;}
+.con_zp .con_tp li a img{width:158px;margin-top:20px;}
 </style>
 </head>
 <body>
-<div>
-	
+<div class="lift_bar">
+    <dl>
+        <dt><h2></h2></dt>
+        <dd class="clearfix">
+            <p>
+                <var></var><em></em>
+                <span>我的主页</span>
+            </p>
+        </dd>
+    </dl> 
 </div>
-<ul>
-	<li><a href="https://una-jian.github.io/n-wei/html/">微软反盗版</a></li>
-	<li><a href="https://una-jian.github.io/n-wei/html/">微软反盗版</a></li>
-	<li><a href="https://una-jian.github.io/n-wei/html/">微软反盗版</a></li>
-	<li><a href="https://una-jian.github.io/n-wei/html/">微软反盗版</a></li>
-	<li><a href="https://una-jian.github.io/n-wei/html/">微软反盗版</a></li>
-	<li><a href="https://una-jian.github.io/n-wei/html/">微软反盗版</a></li>
-	<li><a href="https://una-jian.github.io/n-wei/html/">微软反盗版</a></li>
-</ul>
+<div class="right_bar">
+    
+</div>
+<div class="middol_con">
+    <div class="head_tit clearfix">
+        <h1>雪兰的博客</h1>
+        <div class="right_img">
+            <img src="images/tx.jpg" alt="头像">
+            <h2>欢迎光临</h2>  
+        </div> 
+    </div>
+    <div class="con_zp">
+        <!-- <h2>我的作品</h2> -->
+        <ul class="con_tp clearfix">
+            <li>
+                <a href="https://una-jian.github.io/n-wei/html/"><img src="images/weiruan.jpg" alt=""></a>
+                <h3><em></em>微软反盗版</h3>
+            </li>
+            <li>
+                <a style="background:#4cbe6f;" href="https://una-jian.github.io/ttxs/html/index"><img src="images/ad.jpg" alt=""></a>
+                <h3><em></em> M 站-首页</h3>
+            </li>
+            <li>
+                <a style="background:#4cbe6f;" href="https://una-jian.github.io/ttxs/html/index2"><img src="images/ad.jpg" alt=""></a>
+                <h3><em></em> M 站-更多学校</h3>
+            </li>
+            <li>
+                <a style="background:#4cbe6f;" href="https://una-jian.github.io/ttxs/html/index3"><img src="images/ad.jpg" alt=""></a>
+                <h3><em></em> M 站-搜索</h3>
+            </li>
+            <li>
+                <a style="background:#4cbe6f;" href="https://una-jian.github.io/ttxs/html/index4"><img src="images/ad.jpg" alt=""></a>
+                <h3><em></em> M 站-课程</h3>
+            </li>
+            <li>
+                <a style="background:#4cbe6f;" href="https://una-jian.github.io/ttxs/html/index5"><img src="images/ad.jpg" alt=""></a>
+                <h3><em></em> M 站-工作室</h3>
+            </li>
+            <li>
+                <a style="background:#4cbe6f;" href="https://una-jian.github.io/ttxs/html/index6"><img src="images/ad.jpg" alt=""></a>
+                <h3><em></em> M 站-工作室（简介）</h3>
+            </li>
+            <li>
+                <a style="background:#4cbe6f;" href="https://una-jian.github.io/ttxs/html/index7"><img src="images/ad.jpg" alt=""></a>
+                <h3><em></em> M 站-工作室（评论）</h3>
+            </li>
+            <li>
+                <a style="background:#4cbe6f;" href="https://una-jian.github.io/ttxs/html/index8"><img src="images/ad.jpg" alt=""></a>
+                <h3><em></em> M 站-工作室（课程）</h3>
+            </li>
+        </ul>
+    </div>
+</div>
+
+
 </body>
 </html>
