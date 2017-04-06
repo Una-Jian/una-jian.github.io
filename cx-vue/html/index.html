@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="renderer" content="webkit"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <title>我的简历</title>
+    <meta name="keywords" content="http://www.xhanglu.com/ 新航路"/>
+    <meta name="description" content="http://www.xhanglu.com/ 新航路"/>
+    <link rel="Shortcut Icon" href="images/logo.png" type="image/x-icon">
+            <link type="text/css" rel="stylesheet"  href="../css/index.css" source="widget"/>
+</head>
+<body>
+    <div class="jf-nav">
+        <div class="nav-n clearfix">
+            <h1>
+                <a class="nav-logo" href="##"></a>
+            </h1>
+            <ul class="nav-ul">
+                <li>
+                    <a href="##">简历管理</a>
+                </li>
+                <li>
+                    <a href="##">简历预览</a>
+                </li>
+                <li>
+                    <a href="##">简历编辑</a>
+                </li>
+                <li>
+                    <a href="##">简历发送</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="j-con">
+        <div class="j-cr-l clearfix">
+            <div class="j-left">
+                <p class="j-title clearfix">
+                    <var>我的简历</var>
+                    <span>预览简历</span>
+                </p>
+                <div class="list" id="example" v-cloak>
+                    <!-- 基本信息 资料-->
+                    <div class="j-pop clearfix" id="foun">
+                        <p class="j-pt clearfix">
+                            <var></var>
+                            <em>基本信息</em>
+                            <span id="edit" v-on:click="jb_aedit" v-bind:class="{'model01':decide.base.isB}">编辑</span>
+                        </p>
+                        <div class="b_01" id="zil_xianshi" v-bind:class="{'model01':decide.base.isB}">
+                            <div class="j-conp clearfix">
+                                <p class="j-name" id="name_h">{{resume.name}}</p>
+                                <div class="j-zl">
+                                    <var>{{resume.sex}}</var>/
+                                    <span>23</span>岁
+                                </div>
+                                <div class="j-city">
+                                    <div class="j-ci-01">
+                                        <var>工作经验：</var><em id="job-0">{{resume.work_experience | job_exp}}</em>
+                                    </div>
+                                    <div class="j-ci-02">
+                                        <em>生日：</em><var>{{resume.birthday}}</var>
+                                    </div>
+                                </div>
+                                <div class="j-city">
+                                    <div class="j-ci-01">
+                                        <var>现居地：</var><em id="live-0">{{resume.city_live.province | now_city}}</em>
+                                    </div>
+                                    <div class="j-ci-02">
+                                        <em>户口地：</em><var id="live-1">{{resume.city_birth.province | old_city}}</var>
+                                    </div>
+                                </div>
+                                <div class="j-city">
+                                    <div class="j-ci-01">
+                                        <var>目前状态：</var><em>{{resume.job_status | lizhi}}</em>
+                                    </div>
+                                </div>
+                            </div>
+                            <img src="images/touxiang-2.jpg" alt="" class="j-tpc">
+                        </div>
+                        <div class="b_02 model01" id="zil_edit" v-bind:class="{'model01':decide.base.isA}">
+                            <div class="in-left clearfix" id="in_pra">
+                                <input type="text" class="in-01 in-02" id="inp_" v-model="resume.name" maxlength="5"  placeholder="请输入姓名">
+                                <p class="xb-box in-03">
+                                    <span>性别：</span>
+                                    <input type="radio" value="男" id="radio_" v-model="resume.sex">
+                                    <label for="radio_">男</label>
+                                    <input type="radio" id="radio_0"value="女" v-model="resume.sex">
+                                    <label for="radio_0">女</label>
+                                </p>
+                                <input type="text" class="in-01" v-model="resume.birthday" id="inp_0"  placeholder="生日">
+                                <div class="input-pos">
+                                    <select class="in-01 in-03" name="" id="inp_1" v-model="resume.work_experience">
+                                        <option value="">工作经验</option>
+                                        <option value="1">1年</option>
+                                        <option value="2">2年</option>
+                                        <option value="3">3年</option>
+                                        <option value="4">4年</option>
+                                        <option value="5">5年</option>
+                                        <option value="6">6年</option>
+                                        <option value="7">7年</option>
+                                    </select>
+                                </div>
+                                <div class="input-pos">
+                                    <select class="in-01 in-03" name="" id="inp_2" v-model="resume.city_live.province">
+                                        <option value="">现居住地（省）</option>
+                                        <option value="1">北京</option>
+                                        <option value="2">上海</option>
+                                        <option value="3">深圳</option>
+                                        <option value="4">福建</option>
+                                        <option value="5">郑州</option>
+                                        <option value="6">乌鲁木齐</option>
+                                    </select>
+                                </div>
+                                <div class="input-pos">
+                                    <select class="in-01 in-03" name="" id="inp_3" v-model="resume.city_live.city">
+                                        <option value="">现居住地（市）</option>
+                                        <option value="1">北京</option>
+                                        <option value="2">上海</option>
+                                        <option value="3">深圳</option>
+                                        <option value="4">福建</option>
+                                        <option value="5">郑州</option>
+                                        <option value="6">乌鲁木齐</option>
+                                    </select>
+                                </div>
+                                <div class="input-pos">
+                                    <select class="in-01 in-03" name="" id="inp_4" v-model="resume.city_birth.province">
+                                        <option value="">户口地（省）</option>
+                                        <option value="1">北京</option>
+                                        <option value="2">上海</option>
+                                        <option value="3">深圳</option>
+                                        <option value="4">福建</option>
+                                        <option value="5">郑州</option>
+                                        <option value="6">乌鲁木齐</option>
+                                    </select>
+                                </div>
+                                <div class="input-pos">
+                                    <select class="in-01 in-03" name="" id="inp_5" v-model="resume.city_birth.city">
+                                        <option value="">户口（市）</option>
+                                        <option value="1">北京</option>
+                                        <option value="2">上海</option>
+                                        <option value="3">深圳</option>
+                                        <option value="4">福建</option>
+                                        <option value="5">郑州</option>
+                                        <option value="6">乌鲁木齐</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="pc-right">
+                                <b class="pc-j">
+                                    <img src="" alt="">
+                                </b>
+                                <p>上传头像</p>
+                                <label for="ch_box">
+                                    <input type="checkbox" id="ch_box" value="true" v-model="resume.job_status">
+                                    <span> 目前离职中</span>
+                                </label>
+                                    
+                            </div>
+                            <div class="clear"></div>
+                            <div class="qrk-j">
+                                <input type="button" value="确认" id="rq_qren" v-on:click="jx_send">
+                                <input type="button" value="取消" class="qx-j" id="cl_qx" v-on:click="jx_clear">
+                            </div>
+                        </div>      
+                    </div>
+                    <!-- 基本信息 电话 -->
+                    <div class="j-pop clearfix">
+                        <p class="j-pt clearfix">
+                            <var></var>
+                            <em>基本信息</em>
+                            <span id="phone_edit" v-on:click="phone_edit" v-bind:class="{'model01':decide.phone.isB}">编辑</span>
+                        </p>
+                        <div id="phone_xs" v-bind:class="{'model01':decide.phone.isB}">
+                            <p class="line-ph"  id="phone">{{resume.phone.telephone}}</p>
+                            <p class="line-ph line-ml"  id="e-mali">{{resume.phone.email}}</p>
+                        </div>
+                        <div class="clearfix" id="phone_yc" v-bind:class="{'model01':decide.phone.isA}">
+                            <p class="clearfix j-line-in">
+                                <input type="text" class="line-in" placeholder="请输入电话" id="input_phone" maxlength="11"  v-model="resume.phone.telephone">
+                                <input type="text" class="line-in line-in2" placeholder="请输入邮件地址" v-model="resume.phone.email" id="input_emali">
+                                <span class="in-mal">请输入有效的电话号码</span>
+                                <span class="in-mal1" >请输入有效的邮箱地址</span>
+                            </p>
+                            <div class="qrk-j">
+                                <input type="button" value="确认" id="rq_qren1" v-on:click="phone_send">
+                                <input type="button" value="取消" class="qx-j"  id="cl_qx1" v-on:click="phone_clear">
+                            </div>
+                        </div>
+                    </div>  
+                    <!-- 个人形象 -->
+                    <div class="j-pop clearfix">
+                        <p class="j-pt clearfix">
+                            <var></var>
+                            <em>个人形象</em>
+                            <span id="peo_but_edit" v-bind:class="{'model01':decide.speople.isC}" v-on:click="speo_edit">编辑</span>
+                        </p>
+                        <div class="bj-all clearfix" id="xs_people" v-bind:class="{'model01':decide.speople.isB}">
+                            <var v-on:click="speo_big_edit(-99)"></var>
+                            <p>
+                                <span>通过生活照来展示你的形象</br>提高对企业的吸引力</span>
+                                <b>完善个人形象</b>
+                            </p>
+                        </div>
+                        <div class="clearfix" id="people_edit" v-bind:class="{'model01':decide.speople.isA}">
+                            <p class="clearfix j-line-in" >
+                                <input type="text" class="line-in" id="tizhong" placeholder="体重" v-model="resume.people.weight" maxlength="3"> 
+                                <em>KG</em>
+                                <input type="text" class="line-in line-in2" id="shengao" placeholder="身高" v-model="resume.people.height" maxlength="3">
+                                <i>CM</i>
+                            </p>
+                            <div class="pc-lefe clearfix">
+                                <p class="sc-life-pc">
+                                    <var></var>
+                                    <span>上传生活照</span>
+                                </p>
+                                <p class="sc-life-pc">
+                                    <var></var>
+                                    <span>上传生活照</span>
+                                </p>
+                                <p class="sc-life-pc">
+                                    <var></var>
+                                    <span>上传生活照</span>
+                                </p>
+                            </div>
+                            <div class="qrk-j">
+                                <input type="button" value="确认" id="peo_qur" v-on:click="speo_send">
+                                <input type="button" value="取消" class="qx-j" id="peo_qx" v-on:click="speo_clear">
+                            </div>
+                        </div>
+                        <div class="clearfix" id="people_list" v-bind:class="{'model01':decide.speople.isC}">
+                            <p class="line-ph line-ph1">
+                                体重：<var>{{resume.people.weight}}&nbsp;&nbsp;公斤</var>
+                            </p>
+                            <p class="line-ph line-ml line-ph1">
+                                身高：<var>{{resume.people.height}}&nbsp;&nbsp;厘米</var>
+                            </p>
+                            <div class="clear"></div>
+                            <div class="pc-li-03">
+                                <img src="images/touxiang-2.jpg" alt="">
+                                <img src="images/touxiang-2.jpg" alt="">
+                                <img src="images/touxiang-2.jpg" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 求职意向 -->
+                    <div class="j-pop j-iph j-bj-line clearfix">
+                        <p class="j-pt clearfix">
+                            <var></var>
+                            <em>求职意向</em>
+                            <span v-on:click="yx_edit" v-bind:class="{'model01':decide.yixiang.isC}">编辑</span>
+                        </p>
+                        <div class="bj-all bj-job clearfix" v-bind:class="{'model01':decide.yixiang.isA}">
+                            <var class="bjpc-01" v-on:click="yx_add(-99)"></var>
+                            <p>
+                                <span>填写准确的期望工作能大大提高求职成功率哦…</br>快来添加期望工作吧！</span>
+                                <b>添加期望工作</b>
+                            </p>
+                        </div>
+                        <div class="clearfix"  v-bind:class="{'model01':decide.yixiang.isB}" id="qw_line"> 
+                            <p class="qw-hy clearfix">
+                                <span>期望行业:</span>
+                                <input type="text" placeholder="（最多选择三个行业）" class="input_big" id="input_b" value="{{resume.intent.industry | qwhy_industry}}">
+                                <i class="line_kind clearfix" id="line_kind">
+                                    <var class="cxnb">
+                                        <input type="checkbox" id="hulw" value="0" v-model="resume.intent.industry">
+                                        <label for="hulw">互联网</label>
+                                    </var>
+                                    <var class="cxnb">
+                                        <input type="checkbox" id="jr" value="1" v-model="resume.intent.industry">
+                                        <label for="jr">金融</label>
+                                    </var>
+                                    <var class="cxnb">
+                                        <input type="checkbox" id="jy" value="2" v-model="resume.intent.industry">
+                                        <label for="jy">教育</label>
+                                    </var>
+                                    <var class="cxnb">
+                                        <input type="checkbox" id="ct" value="3" v-model="resume.intent.industry">
+                                        <label for="ct">传统</label>
+                                    </var>
+                                    <var class="cxnb">
+                                        <input type="checkbox" id="bbl" value="4" v-model="resume.intent.industry">
+                                        <label for="bbl">不编了</label>
+                                    </var>  
+                                    <var class="cxnb">
+                                        <input type="checkbox" id="lwzy" value="5" v-model="resume.intent.industry">
+                                        <label for="lwzy">互联网</label>
+                                    </var>
+                                    <var class="cxnb">
+                                        <input type="checkbox" id="jr_0" value="6" v-model="resume.intent.industry">
+                                        <label for="jr_0">金融</label>
+                                    </var>
+                                    <var class="cxnb">
+                                        <input type="checkbox" id="jy_1" value="7" v-model="resume.intent.industry">
+                                        <label for="jy_1">教育</label>
+                                    </var>
+                                    <var class="cxnb">
+                                        <input type="checkbox" id="ct_1" value="8" v-model="resume.intent.industry">
+                                        <label for="ct_1">传统</label>
+                                    </var>
+                                    <var class="cxnb">
+                                        <input type="checkbox" id="wc_" value="9" v-model="resume.intent.industry">
+                                        <label for="wc_">不编了</label>
+                                    </var>  
+                                    <var class="cxnb">
+                                        <input type="checkbox" id="mmp" value="10" v-model="resume.intent.industry">
+                                        <label for="mmp">互联网</label>
+                                    </var>
+                                    <var class="cxnb">
+                                        <input type="checkbox" id="yds" value="11" v-model="resume.intent.industry">
+                                        <label for="yds">金融</label>
+                                    </var>
+                                    <var class="cxnb">
+                                        <input type="checkbox" id="lsl" value="12" v-model="resume.intent.industry">
+                                        <label for="lsl">教育</label>
+                                    </var>
+                                    <var class="cxnb">
+                                        <input type="checkbox" id="hhee" value="13" v-model="resume.intent.industry">
+                                        <label for="hhee">传统</label>
+                                    </var>
+                                    <var class="cxnb">
+                                        <input type="checkbox" id="wlb" value="14" v-model="resume.intent.industry">
+                                        <label for="wlb">不编了</label>
+                                    </var class="cxnb"> 
+                                    <i class="button_01">
+                                        <input type="button" value="确认" id="xz_qr">
+                                        <input type="button" value="取消" id="xz_qx">
+                                    </i>
+                                    
+                                </i>    
+                            </p>
+                            <p class="qw-hy clearfix">
+                                <span>期望职位:</span>
+                                <input type="text" class="input_big" v-model="resume.intent.position" id="i_qwzw">
+                            </p>
+                            <p class="qw-hy clearfix">
+                                <span>期望薪资:</span>
+                                <input type="text" class="input_big" v-model="resume.intent.salary" id="i_qwxz">
+                            </p>
+                            <p class="qw-hy  qw-city clearfix">
+                                <span>期望工作地区:</span>
+                                <select class="shen_01" name="" placeholder="省">
+                                    <option value="">省</option>
+                                    <option value="1">北京</option>
+                                    <option value="2">上海</option>
+                                    <option value="3">深圳</option>
+                                    <option value="4">福建</option>
+                                    <option value="5">郑州</option>
+                                    <option value="6">乌鲁木齐</option>
+                                </select>
+                                <select class="shi_02" name="" placeholder="市">
+                                    <option value="">市</option>
+                                    <option value="1">北京</option>
+                                    <option value="2">上海</option>
+                                    <option value="3">深圳</option>
+                                    <option value="4">福建</option>
+                                    <option value="5">郑州</option>
+                                    <option value="6">乌鲁木齐</option>
+                                </select>
+                                <input type="checkbox" class="check_box1" id="cb-02" v-model="resume.intent.area_province">
+                                <label for="cb-02">可出差</label>
+                            </p>
+                            <p class="qw-hy clearfix">
+                                <span>期望销售产品:</span>
+                                <input type="text" class="input_big" v-model="resume.intent.production" id="i_qwxscp">
+                            </p>
+                            <p class="qw-hy qw-chbox clearfix">
+                                <span>期望销售方式:</span>
+                                <var class="big_var">
+                                    <input type="checkbox" id="lab_01" value="0" v-model="resume.intent.sell_mode">
+                                    <label for="lab_01" class="big_la">店面销售</label>
+                                </var>
+                                <var class="big_var">
+                                    <input type="checkbox" id="lab_02" value="1" v-model="resume.intent.sell_mode">
+                                    <label for="lab_02" class="big_la">渠道销售</label>
+                                </var>
+                                <var class="big_var">
+                                    <input type="checkbox" id="lab_03" value="2" v-model="resume.intent.sell_mode">
+                                    <label for="lab_03" class="big_la">电话销售</label>
+                                </var>
+                                <var class="big_var">
+                                    <input type="checkbox" id="lab_04" value="3" v-model="resume.intent.sell_mode">
+                                    <label for="lab_04" class="big_la">网络销售</label>
+                                </var>
+                                <var class="big_var">
+                                    <input type="checkbox" id="lab_05" value="4" v-model="resume.intent.sell_mode">
+                                    <label for="lab_05" class="big_la">面访销售</label>
+                                </var>
+                                <var class="big_var">
+                                    <input type="checkbox" id="lab_06" value="5" v-model="resume.intent.sell_mode">
+                                    <label for="lab_06" class="big_la">大客户销售</label>
+                                </var>
+                            </p>
+                            <div class="clear"></div>
+                            <div class="qrk-j">
+                                <input type="button" value="确认" v-on:click="yx_quer">
+                                <input type="button" value="取消" v-on:click="yx_quex">
+                            </div>
+                        </div>
+                        <div class="qw-con" v-bind:class="{'model01':decide.yixiang.isC}">
+                            <p class="line-job">
+                                <em>期望行业：</em>
+                                <var>{{{resume.intent.industry | qwhy_industry}}}</var>
+                            </p>
+                            <p class="line-job">
+                                <em>期望职位：</em>
+                                <var>{{resume.intent.position}}</var>
+                            </p>
+                            <p class="line-job">
+                                <em>期望工作地区：</em>
+                                <var>{{resume.intent.area_city | area_big}}</var>
+                            </p>
+                            <p class="line-job">
+                                <em>期望底薪：</em>
+                                <var>{{resume.intent.salary}}</var>
+                            </p>
+                            <p class="line-job">
+                                <em>期望销售产品：</em>
+                                <var>{{resume.intent.production}}</var>
+                            </p>
+                            <p class="line-job">
+                                <em>期望方式：</em>
+                                <var>{{{resume.intent.sell_mode | sell_ok}}}</var> 
+                            </p>
+                        </div>  
+                    </div>
+                    <!-- 工作经历 -->
+                    <div class="j-pop j-iph j-bj-line clearfix" id="work_app">
+                        <p class="j-pt clearfix">
+                            <var></var>
+                            <em>工作经历</em>
+                            <span id="job_but_deit" v-on:click="history_add_(-100)" v-bind:class="{'model01':decide.history_work_.isC}">添加</span>
+                        </p>
+                        <div class="bj-all bj-job clearfix" id="xs_job" v-bind:class="{'model01':decide.history_work_.isA}">
+                            <var class="bjpc-01" id='job_add' v-on:click="history_add(-99)"></var>
+                            <p>
+                                <span>填写准确的期望工作能大大提高求职成功率哦…</br>快来添加期望工作吧！</span>
+                                <b>添加工作经历</b>
+                            </p>
+                        </div>
+                        <div class="clearfix" v-bind:class="{'model01':decide.history_work_.isB}">
+                            <p class="clearfix j-line-in">
+                                <input type="text" class="line-in" placeholder="公司名称" v-model="expIten.company">
+                                <input type="text" class="line-in line-in2" placeholder="职位名称"  v-model="expIten.position">
+                            </p>
+                            <p class="clearfix j-line-in j-line-in1">
+                                <select class="line-in in-mc in-mc1">
+                                    <option>开始年份</option>
+                                    <option>2001年</option>
+                                    <option>2002年</option>
+                                    <option>2003年</option>
+                                </select>
+                                <select class="line-in in-mc">
+                                    <option>开始月份</option>
+                                    <option>1月份</option>
+                                    <option>2月份</option>
+                                    <option>3月份</option>
+                                </select>
+                                <select class="line-in in-mc">
+                                    <option>结束年份</option>
+                                    <option>2004年</option>
+                                    <option>2005年</option>
+                                    <option>2006年</option>
+                                </select>
+                                <select class="line-in in-mc">
+                                    <option>结束月份</option>
+                                    <option>4月份</option>
+                                    <option>5月份</option>
+                                    <option>6月份</option>
+                                </select>
+                            </p>
+                            <p class="gl-gw-01">
+                                <input type="checkbox" id="gwgl" v-model="expIten.sales_type">
+                                <label for="gwgl">管理岗位</label>
+                            </p>
+                            <p class="clearfix j-line-in">
+                                <input type="text" class="line-in" value=""  placeholder="汇报对象" v-model="expIten.reportto">
+                                <input type="text" class="line-in line-in2" value=""  placeholder="下属人数" v-model="expIten.subordinate">
+                            </p>
+                            <textarea cols="30" rows="10" class="test-001" placeholder="从招聘，培训，团队建设，销售目标等角度描述管理方面的成绩" v-model="expIten.desc"></textarea>
+                            <div class="in-job-te">
+                                <span>从招聘，培训，团队建设，销售目标等角度描述管理方面的成绩吧~</span>
+                                <p>
+                                    <input type="text" class="job-te-01" value=""  placeholder="月销售额"  v-model="expIten.sales_year">
+                                    <input type="text" value="" placeholder="年销售额" v-model="expIten.finish_rate">
+                                    <input type="text" value="" placeholder="目标完成率" v-model="expIten.sales_lv">
+                                    <input type="text" class="job-te-01" placeholder="产品" v-model="expIten.productions">
+                                    <input type="text" value="" placeholder="销售对象" v-model="expIten.sell_target">
+                                    <input type="text" value="" placeholder="销售方式" v-model="expIten.sell_mode">
+                                </p>
+                            </div>
+                            <p class="gl-gw-01">
+                                <input type="checkbox" id="gj_more" v-model="expIten.more_desc">
+                                <label for="gj_more">添加更多描述</label>
+                            </p>
+                            <textarea name="" id="" cols="30" rows="10" class="test-001 test-002" v-model="expIten.desc_area"></textarea>
+                            
+                            <div class="qrk-j">
+                                <input type="button" value="保存" v-on:click="job_quer(expIten)">
+                                <input type="button" value="取消" v-on:click="job_quex">
+                            </div>
+                        </div>
+                        <div class="clearfix" v-bind:class="{'model01':decide.history_work_.isC}">
+                            <ul class="list-01">
+                                <li class="clearfix list-02" v-for="woqu in resume.work_history">
+                                    <div>
+                                        <var></var>
+                                        <em id="job_company">{{woqu.company}}</em>-&nbsp;<span id="job_position">{{woqu.position}}</span>
+                                    </div>
+                                    <p>
+                                        <em v-on:click="job_edit(woqu,$index)">编辑</em>
+                                        <em v-on:click="job_clear($index)">删除</em>
+                                    </p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>  
+                    <!-- 教育培训 -->
+                    <div class="j-pop j-iph j-bj-line clearfix">
+                        <p class="j-pt clearfix">
+                            <var></var>
+                            <em>教育培训</em>
+                            <span style="margin-left:16px;"  v-bind:class="{'model01':decide.edu_history_.isC}" v-on:click="add_edu_s(-100)">添加</span>
+                        </p>
+                        <div class="bj-all bj-job clearfix" v-bind:class="{'model01':decide.edu_history_.isA}">
+                            <var class="bjpc-01" v-on:click="add_edu_s(-99)"></var>
+                            <p>
+                                <span>填写准确的期望工作能大大提高求职成功率哦…</br>快来添加期望工作吧！</span>
+                                <b v-on:click="addbig_edu_s(-99)">添加教育经历</b>&nbsp;&nbsp;&nbsp;&nbsp;
+                            </p>
+                        </div>
+                        <ul class="list-01"  v-bind:class="{'model01':decide.edu_history_.isC}">
+                            <li class="clearfix list-02" v-for="nonum in resume.edu_history">
+                                <div>
+                                    <var></var>
+                                    <em>{{nonum.school}}</em>
+                                    <span>-&nbsp;{{nonum.major}}</span>
+                                    <span>-&nbsp;{{nonum.level}}</span>
+                                </div>
+                                <p>
+                                    <em v-on:click="edu_edit(nonum,$index)">编辑</em>
+                                    <em v-on:click="edu_dele($index)">删除</em>
+                                </p>
+                            </li>
+                        </ul>
+                        <div class="clearfix" v-bind:class="{'model01':decide.edu_history_.isB}">
+                            <p class="clearfix j-line-in">
+                                <input type="text" class="line-in" v-model="education.school" placeholder="学校名称" >
+                                <input type="text" class="line-in line-in2" v-model="education.major" placeholder="专业">
+                            </p>
+                            <p class="clearfix j-line-in j-line-in1">
+                                <select class="line-in in-mc in-mc1">
+                                    <option>开始年份</option>
+                                    <option>2001年</option>
+                                    <option>2002年</option>
+                                    <option>2003年</option>
+                                </select>
+                                <select class="line-in in-mc">
+                                    <option>开始月份</option>
+                                    <option>1月份</option>
+                                    <option>2月份</option>
+                                    <option>3月份</option>
+                                </select>
+                                <select class="line-in in-mc">
+                                    <option>结束年份</option>
+                                    <option>2004年</option>
+                                    <option>2005年</option>
+                                    <option>2006年</option>
+                                </select>
+                                <select class="line-in in-mc">
+                                    <option>结束月份</option>
+                                    <option>4月份</option>
+                                    <option>5月份</option>
+                                    <option>6月份</option>
+                                </select>
+                            </p>
+                            <p class="clearfix j-line-in">
+                                <input type="text" class="line-in" v-model="education.level" style="margin-top:10px;" placeholder="学历">
+                            </p>
+                            <div class="qrk-j">
+                                <input type="button" value="确认" v-on:click="edu_send(education)">
+                                <input type="button" value="取消" class="qx-j" v-on:click="edu_clear">
+                            </div>
+                        </div>
+                    </div>  
+                    <!-- 证书 -->
+                    <div class="j-pop j-iph j-bj-line clearfix">
+                        <p class="j-pt clearfix">
+                            <var></var>
+                            <em>证书</em>
+                            <span v-bind:class="{'model01':decide.train_.isC}" v-on:click="tra_add(-100)">添加</span>
+                        </p>
+                        <div class="bj-all bj-job clearfix"  v-bind:class="{'model01':decide.train_.isA}">
+                            <var class="bjpc-01"  v-on:click="tra_add(-99)"></var>
+                            <p>
+                                <span>填写准确的期望工作能大大提高求职成功率哦…</br>快来添加期望工作吧！</span>
+                                <b  v-on:click="tra_add(-99)">添加期望工作</b>
+                            </p>
+                        </div>
+                        <ul class="list-01" v-bind:class="{'model01':decide.train_.isC}">
+                            <li class="clearfix list-02" v-for="yoga in resume.train">
+                                <div>
+                                    <var></var>
+                                    <em>{{yoga.name}}</em>
+                                    <span>-&nbsp;{{yoga.rog}}</span>
+                                </div>
+                                <p>
+                                    <em v-on:click="tra_eidt(yoga,$index)">编辑</em>
+                                    <em v-on:click="tra_dele($index)">删除</em>
+                                </p>
+                            </li>
+                        </ul>
+                        <div class="clearfix"  v-bind:class="{'model01':decide.train_.isB}">
+                            <p class="clearfix j-line-in">
+                                <input type="text" class="line-in" placeholder="证书名称" v-model="zhengshu.name">
+                                <input type="text" class="line-in line-in2" placeholder="发证机构" v-model="zhengshu.rog">
+                            </p>
+                            <div class="qrk-j">
+                                <input type="button" value="确认" v-on:click="tra_send(zhengshu)">
+                                <input type="button" value="取消" class="qx-j" v-on:click="tra_clear">
+                            </div>
+                        </div>
+                    </div>   
+                    <!-- 外语水平 -->
+                    <div class="j-pop j-iph j-bj-line clearfix">
+                        <p class="j-pt clearfix">
+                            <var></var>
+                            <em>外语水平</em>
+                            <span v-bind:class="{'model01':decide.language_.isC}" v-on:click="lang_add(-100)">添加</span>
+                        </p>
+                        <div class="bj-all bj-job clearfix"  v-bind:class="{'model01':decide.language_.isA}">
+                            <var class="bjpc-01" v-on:click="lang_add(-99)"></var>
+                            <p>
+                                <span>填写准确的期望工作能大大提高求职成功率哦…</br>快来添加期望工作吧！</span>
+                                <b v-on:click="lang_add(-99)">添加期望工作</b>
+                            </p>
+                        </div>
+                        <ul class="list-01" v-bind:class="{'model01':decide.language_.isC}">
+                            <li class="clearfix list-02" v-for="yuyan in resume.language_s">
+                                <div>
+                                    <var></var>
+                                    <em>{{yuyan.category}}</em>
+                                    <span>-&nbsp;{{yuyan.listen}}</span>
+                                </div>
+                                <p>
+                                    <em v-on:click="lang_eidt(yuyan,$index)">编辑</em>
+                                    <em v-on:click="lang_dele($index)">删除</em>
+                                </p>
+                            </li>
+                        </ul>
+                        <div class="clearfix"  v-bind:class="{'model01':decide.language_.isB}">
+                            <p class="clearfix j-line-in">
+                                <input type="text" class="line-in" placeholder="选择语言" v-model="langsha.category">
+                                <input type="text" class="line-in line-in2" placeholder="其他"  v-model="langsha.listen">
+                            </p>
+                            <p class="clearfix j-line-in j-line-in1">
+                                <select class="line-in in-mc in-mc1" placeholder="开始年份">
+                                    <option>开始年份</option>
+                                    <option>2001年</option>
+                                    <option>2002年</option>
+                                    <option>2003年</option>
+                                </select>
+                                <select class="line-in in-mc" placeholder="开始月份">
+                                    <option开始月份</option>
+                                    <option>1月份</option>
+                                    <option>2月份</option>
+                                    <option>3月份</option>
+                                </select>
+                                <select class="line-in in-mc" placeholder="结束年份">
+                                    <option>结束年份</option>
+                                    <option>2004年</option>
+                                    <option>2005年</option>
+                                    <option>2006年</option>
+                                </select>
+                                <select class="line-in in-mc" placeholder="结束月份">
+                                    <option>结束月份</option>
+                                    <option>4月份</option>
+                                    <option>5月份</option>
+                                    <option>6月份</option>
+                                </select>
+                            </p>
+                            <div class="qrk-j">
+                                <input type="button" value="保存" v-on:click="lang_send(langsha)">
+                                <input type="button" value="取消" class="qx-j" v-on:click="lang_clear">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="j-right">  
+                <input type="button" value="上传简历，自动解析" class="sc_but">
+                <i>支持智联招聘，前程无忧简历</i> 
+                <p></p>
+                <div class="inte_mation clearfix">
+                    <var>❤</var>
+                    <span>基本信息</span>
+                </div>
+                <div class="inte_mation clearfix">
+                    <var>❤</var>
+                    <span>联系方式</span>
+                </div>
+                <div class="inte_mation clearfix">
+                    <var>❤</var>
+                    <span>求职意向</span>
+                </div>
+                <div class="inte_mation clearfix">
+                    <var>❤</var>
+                    <span>销售技能</span>
+                </div>
+                <div class="inte_mation clearfix">
+                    <var>❤</var>
+                    <span>工作经验</span>
+                </div>
+                <div class="inte_mation clearfix">
+                    <var>❤</var>
+                    <span>教育背景</span>
+                </div>
+            </div>
+        </div>
+    </div>
+<script>   
+    seajs.use("index",function (app) {
+        app.init();
+    });
+</script>
+<script type="text/javascript" src="../js/jquery.js" source="widget"></script>
+<script type="text/javascript" src="../js/sea.js" source="widget"></script>
+</body>
+</html>
